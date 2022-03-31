@@ -1,37 +1,60 @@
+
 public class Conta {
+	private int conta;
+	private String titular;
+	private double saldo;
 	
-	public final int numeroConta;
-	public String nome;
-	private double saldo; 
+//CONSTRUTORES
+	public Conta(int conta, String titular, double depositoInicial) {
+		this.conta = conta;
+		this.titular = titular;
+		deposito(depositoInicial);
+	}
 	
-	public Conta(int numeroConta, String nome) {
-		this.numeroConta = numeroConta;
-		this.nome = nome;
+	public Conta(int conta, String titular) {
+		this.conta = conta;
+		this.titular = titular;
+	}
+
+	public int getConta() {
+		return conta;
+	}
+
+	public String getTitular() {
+		return titular;
+	}
+
+	public void setTitular(String titular) {
+		this.titular = titular;
 	}
 
 	public double getSaldo() {
-		return this.saldo;
-	}
-	
-	public void setSaldo(double saldo) {
-		this.saldo = saldo;
+		return saldo;
 	}
 
-	public void setDepositoSaldo(double valor) {
-		this.saldo += valor;
+//MÉTODOS
+	
+	public void deposito(double valor) {
+		saldo += valor; //Não precisa dizer que é THIS.SALDO, pois seria ambiguidade, já que não tem o mesmo nome nos parâmetros
 	}
 	
-	public void setSaqueSaldo(double valor) {
-		this.saldo -= valor;
-		this.saldo -= 5.0;
+	public void saque(double valor) {
+		saldo -= valor + 5;
 	}
-	
+
+	public String toString() {
+		return "Conta: " 
+				+ conta 
+				+ " | Titular: " 
+				+ titular 
+				+ " | Saldo: R$ "  
+				+ String.format("%.2f", saldo);
+	}
+	/*Com o toString, conseguimos transformar todo o objeto em uma string, formatando o texto de saída. 
+	 Logo, basta printar o nome do objeto no sysout na classe principal.
+	 */
 	
 }
-
-
-
-
 
 
 
